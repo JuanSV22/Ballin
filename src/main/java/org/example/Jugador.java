@@ -60,8 +60,12 @@ public class Jugador {
 	 * 
 	 * @param isLeader
 	 */
-	public void makeLeader(boolean isLeader) {
+	public void setLeadership(boolean isLeader) {
 		this.isLeader = isLeader;
 	}
 
+	@Override
+	public String toString() {
+		return "Player: " + name+ ", Number: " + number;
+	}
 }

@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d918cb0-da6c-4e63-9eda-1e1538dfc2c7" name="Changes" comment="README.md added.">
+    <list default="true" id="6d918cb0-da6c-4e63-9eda-1e1538dfc2c7" name="Changes" comment="Jugador class defined well.&#10;Equipo class defined partially.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Equipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Equipo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Jugador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +34,9 @@
         <option name="workspaceImportEnabled" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2QvnmnvRIoxdWLSoSbRZbwuNfWM" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -79,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686234449942</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Jugador class defined well.&#10;Equipo class defined partially.">
+      <created>1686235885787</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1686235885787</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -108,6 +119,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Generated code from .vpp file." />
     <MESSAGE value="README.md added." />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md added." />
+    <MESSAGE value="Jugador class defined well.&#10;Equipo class defined partially." />
+    <option name="LAST_COMMIT_MESSAGE" value="Jugador class defined well.&#10;Equipo class defined partially." />
   </component>
 </project>

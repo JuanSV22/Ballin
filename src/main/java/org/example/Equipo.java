@@ -104,7 +104,7 @@ public class Equipo {
 	 * @param oldPlayerNumber
 	 * @param newPlayerName
 	 */
-	public void replacePlayer(int oldPlayerNumber, String newPlayerName) throws Exception{
+	public void replacePlayer(int oldPlayerNumber, String newPlayerName){
 		String removedPlayer;
 		for (Jugador player:this.players) {
 			if (player.getNumber() == oldPlayerNumber) {
@@ -122,9 +122,16 @@ public class Equipo {
 	 * @param oldPlayerName
 	 * @param newPlayerName
 	 */
-	public void replacePlayer(String oldPlayerName, String newPlayerName) {
-		// TODO - implement Equipo.replacePlayer
-		throw new UnsupportedOperationException();
+	public void replacePlayer(String oldPlayerName, String newPlayerName){
+		String removedPlayer;
+		for (Jugador player:this.players) {
+			if (player.getName() == oldPlayerName) {
+				removedPlayer = player.getName() + ", Number:" + player.getNumber();
+				this.removePlayer(player);
+				this.addPlayer(newPlayerName);
+				System.out.println(removedPlayer + ", has been replaced successfully with "+ this.players[4].toString()+".");				break;
+			}
+		}
 	}
 
 	/**
@@ -133,41 +140,81 @@ public class Equipo {
 	 * @param newPlayer
 	 */
 	public void replacePlayer(String oldPlayerName, Jugador newPlayer) {
-		// TODO - implement Equipo.replacePlayer
-		throw new UnsupportedOperationException();
+		String removedPlayer;
+		for (Jugador player:this.players) {
+			if (player.getName() == oldPlayerName) {
+				removedPlayer = player.toString();
+				this.removePlayer(player);
+				this.players[4] = newPlayer;
+				System.out.println(removedPlayer + ", has been replaced successfully with "+ this.players[4].toString()+".");
+				break;
+			}
+		}
 	}
 
-	public Jugador getLeader() {
-		// TODO - implement Equipo.getLeader
-		throw new UnsupportedOperationException();
+	public Jugador getLeader() throws Exception{
+		for (Jugador player:this.players) {
+			if (player.askIfLeader()) {
+				return player;
+			}
+		}
+		throw new Exception("This team has no leader.");
 	}
 
-	public int getLeaderNumber() {
-		// TODO - implement Equipo.getLeaderNumber
-		throw new UnsupportedOperationException();
+	public int getLeaderNumber() throws Exception{
+		for (Jugador player:this.players) {
+			if (player.askIfLeader()) {
+				return player.getNumber();
+			}
+		}
+		throw new Exception("This team has no leader.");
 	}
 
-	public String getLeaderName() {
-		// TODO - implement Equipo.getLeaderName
-		throw new UnsupportedOperationException();
+	public String getLeaderName()  throws Exception{
+		for (Jugador player:this.players) {
+			if (player.askIfLeader()) {
+				return player.getName();
+			}
+		}
+		throw new Exception("This team has no leader.");
 	}
 
 	/**
 	 * 
 	 * @param newLeaderNumber
 	 */
-	public void changeLeader(int newLeaderNumber) {
-		// TODO - implement Equipo.changeLeader
-		throw new UnsupportedOperationException();
+	public void changeLeader(int newLeaderNumber) throws Exception {
+		String oldLeader;
+		for (Jugador player: this.players) {
+			if (player.askIfLeader()) {
+				player.setLeadership(false);
+				for (Jugador leaderCandidate:this.players) {
+					oldLeader = player.toString();
+					getPlayer(newLeaderNumber).setLeadership(true);
+					System.out.println(oldLeader + ", has been replaced successfully with "+ leaderCandidate.toString()+" as leader.");
+					break;
+				}
+			}
+		}
 	}
 
 	/**
 	 * 
 	 * @param newLeaderName
 	 */
-	public void changeLeader(String newLeaderName) {
-		// TODO - implement Equipo.changeLeader
-		throw new UnsupportedOperationException();
+	public void changeLeader(String newLeaderName) throws Exception{
+		String oldLeader;
+		for (Jugador player: this.players) {
+			if (player.askIfLeader()) {
+				player.setLeadership(false);
+				for (Jugador leaderCandidate:this.players) {
+					oldLeader = player.toString();
+					getPlayer(newLeaderName).setLeadership(true);
+					System.out.println(oldLeader + ", has been replaced successfully with "+ leaderCandidate.toString()+" as leader.");
+					break;
+				}
+			}
+		}
 	}
 
 	/**
@@ -175,8 +222,10 @@ public class Equipo {
 	 * @param name
 	 */
 	public void addPlayer(String name) {
-		// TODO - implement Equipo.addPlayer
-		throw new UnsupportedOperationException();
+		if (this.players.length <= 4) {
+			int length = this.players.length;
+			this.players[length] = new Jugador(name);
+		}
 	}
 
 	/**
@@ -184,32 +233,51 @@ public class Equipo {
 	 * @param name
 	 */
 	public void removePlayer(String name) {
-		// TODO - implement Equipo.removePlayer
-		throw new UnsupportedOperationException();
+		int count = 0;
+		Jugador[] updatedPlayers = new Jugador[this.players.length];
+		for (Jugador jugador : this.players) {
+			if (!jugador.getName().equals(name)) {
+				updatedPlayers[count++] = jugador;
+			}
+		}
+		this.players = new Jugador[count];
+		System.arraycopy(updatedPlayers, 0, this.players, 0, count);
 	}
+
+
 
 	/**
 	 *
 	 * @param jugador
 	 */
 	public void removePlayer(Jugador jugador) {
-		// TODO - implement Equipo.removePlayer
-		throw new UnsupportedOperationException();
+		int count = 0;
+		Jugador[] updatedPlayers = new Jugador[this.players.length];
+		for (Jugador removalCandidate : this.players) {
+			if (!removalCandidate.equals(jugador)) {
+				updatedPlayers[count++] = removalCandidate;
+			}
+		}
+		this.players = new Jugador[count];
+		System.arraycopy(updatedPlayers, 0, this.players, 0, count);
 	}
 
+
 	public int playerCount() {
-		// TODO - implement Equipo.playerCount
-		throw new UnsupportedOperationException();
+		return this.players.length;
 	}
 
 	public boolean hasEnoughPlayers() {
-		// TODO - implement Equipo.hasEnoughPlayers
-		throw new UnsupportedOperationException();
+		return this.players.length == 5;
 	}
 
 	public boolean hasLeader() {
-		// TODO - implement Equipo.hasLeader
-		throw new UnsupportedOperationException();
+		for (Jugador jugador:this.players) {
+			if (jugador.askIfLeader()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
