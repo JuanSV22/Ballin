@@ -68,7 +68,7 @@ public class Menu {
         }
     }
 
-    private void displayTeams() {
+    void displayTeams() {
         System.out.println("Equipos:");
         for (int i = 0; i < league.teamCount(); i++) {
             System.out.println("Equipo " + (i) + ":");
