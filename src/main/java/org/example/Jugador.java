@@ -1,4 +1,7 @@
 package org.example;
+
+import com.github.javafaker.*;
+
 public class Jugador {
 
 	private String name;
@@ -6,8 +9,9 @@ public class Jugador {
 	private boolean isLeader;
 
 	public Jugador() {
-		// TODO - implement Jugador.Jugador
-		throw new UnsupportedOperationException();
+		Faker fk = new Faker();
+		this.name = fk.name().toString();
+		this.isLeader = false;
 	}
 
 	/**
@@ -15,8 +19,8 @@ public class Jugador {
 	 * @param name
 	 */
 	public Jugador(String name) {
-		// TODO - implement Jugador.Jugador
-		throw new UnsupportedOperationException();
+		this.name = name;
+		this.isLeader = false;
 	}
 
 	public String getName() {
@@ -29,6 +33,11 @@ public class Jugador {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setName() {
+		Faker fk = new Faker();
+		this.name = fk.name().toString();
 	}
 
 	public int getNumber() {
@@ -44,8 +53,7 @@ public class Jugador {
 	}
 
 	public boolean askIfLeader() {
-		// TODO - implement Jugador.askIfLeader
-		throw new UnsupportedOperationException();
+		return this.isLeader;
 	}
 
 	/**
@@ -53,8 +61,7 @@ public class Jugador {
 	 * @param isLeader
 	 */
 	public void makeLeader(boolean isLeader) {
-		// TODO - implement Jugador.makeLeader
-		throw new UnsupportedOperationException();
+		this.isLeader = isLeader;
 	}
 
 }

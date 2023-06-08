@@ -1,13 +1,20 @@
 package org.example;
 
+import com.github.javafaker.Faker;
+
 public class Equipo {
 
 	private Jugador[] players;
 	private int score;
 
 	public Equipo() {
-		// TODO - implement Equipo.Equipo
-		throw new UnsupportedOperationException();
+		Faker fk = new Faker();
+		this.score = 0;
+		this.players = new Jugador[5];
+		for (int i = 0; i < 5; i++) {
+			this.players[i] = new Jugador();
+			this.players[i].setNumber(fk.number().numberBetween(0,99));
+		}
 	}
 
 	/**
@@ -15,8 +22,12 @@ public class Equipo {
 	 * @param players
 	 */
 	public Equipo(Jugador[] players) {
-		// TODO - implement Equipo.Equipo
-		throw new UnsupportedOperationException();
+		Faker fk = new Faker();
+		this.score = 0;
+		this.players = players;
+		while (this.players.length > 5) {
+			removePlayer(this.players[5]);
+		}
 	}
 
 	/**
@@ -148,6 +159,15 @@ public class Equipo {
 	 * @param name
 	 */
 	public void removePlayer(String name) {
+		// TODO - implement Equipo.removePlayer
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 *
+	 * @param jugador
+	 */
+	public void removePlayer(Jugador jugador) {
 		// TODO - implement Equipo.removePlayer
 		throw new UnsupportedOperationException();
 	}
