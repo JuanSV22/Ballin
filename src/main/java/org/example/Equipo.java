@@ -28,6 +28,9 @@ public class Equipo {
 		while (this.players.length > 5) {
 			removePlayer(this.players[5]);
 		}
+		for (Jugador player:this.players) {
+			player.setNumber(fk.number().numberBetween(0,99));
+		}
 	}
 
 	/**
@@ -36,8 +39,15 @@ public class Equipo {
 	 * @param score
 	 */
 	public Equipo(Jugador[] players, int score) {
-		// TODO - implement Equipo.Equipo
-		throw new UnsupportedOperationException();
+		Faker fk = new Faker();
+		this.players = players;
+		while (this.players.length > 5) {
+			removePlayer(this.players[5]);
+		}
+		for (Jugador player:this.players) {
+			player.setNumber(fk.number().numberBetween(0,99));
+		}
+		this.score = score;
 	}
 
 	public Jugador[] getPlayers() {
@@ -56,18 +66,25 @@ public class Equipo {
 	 * 
 	 * @param playerNumber
 	 */
-	public Jugador getPlayer(int playerNumber) {
-		// TODO - implement Equipo.getPlayer
-		throw new UnsupportedOperationException();
+	public Jugador getPlayer(int playerNumber) throws Exception {
+		for (Jugador player:this.players) {
+			if (player.getNumber()==playerNumber){
+				return player;
+		}}
+		throw new Exception("This player doesn't exist.");
 	}
 
 	/**
 	 * 
 	 * @param playerName
 	 */
-	public Jugador getPlayer(String playerName) {
-		// TODO - implement Equipo.getPlayer
-		throw new UnsupportedOperationException();
+	public Jugador getPlayer(String playerName) throws Exception{
+		for (Jugador player:this.players) {
+			if (player.getName() == playerName) {
+				return player;
+			}
+		}
+		throw new Exception("This player doesn't exist.");
 	}
 
 	public int getScore() {
@@ -87,9 +104,17 @@ public class Equipo {
 	 * @param oldPlayerNumber
 	 * @param newPlayerName
 	 */
-	public void replacePlayer(int oldPlayerNumber, String newPlayerName) {
-		// TODO - implement Equipo.replacePlayer
-		throw new UnsupportedOperationException();
+	public void replacePlayer(int oldPlayerNumber, String newPlayerName) throws Exception{
+		String removedPlayer;
+		for (Jugador player:this.players) {
+			if (player.getNumber() == oldPlayerNumber) {
+				removedPlayer = player.getName() + ", Number:" + player.getNumber();
+				this.removePlayer(player);
+				this.addPlayer(newPlayerName);
+				System.out.println("Player: " + removedPlayer+ ", has been replaced successfully with player: " + this.players[4].getName() + ", Number: " + this.players[4].getNumber() + ".");
+				break;
+			}
+		}
 	}
 
 	/**
