@@ -2,6 +2,8 @@ package org.example;
 
 import com.github.javafaker.Faker;
 
+import java.util.Arrays;
+
 public class Equipo {
 
 	private Jugador[] players;
@@ -15,6 +17,7 @@ public class Equipo {
 			this.players[i] = new Jugador();
 			this.players[i].setNumber(fk.number().numberBetween(0,99));
 		}
+		this.players[fk.number().numberBetween(0,4)].setLeadership(true);
 	}
 
 	/**
@@ -280,4 +283,10 @@ public class Equipo {
 		return false;
 	}
 
+	public String toString(int num) {
+		return "Equipo" + num +
+				"{players=" + Arrays.toString(players) +
+				", score=" + score +
+				'}';
+	}
 }

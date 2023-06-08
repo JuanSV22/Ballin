@@ -10,7 +10,7 @@ public class Jugador {
 
 	public Jugador() {
 		Faker fk = new Faker();
-		this.name = fk.name().toString();
+		this.name = fk.funnyName().name();
 		this.isLeader = false;
 	}
 

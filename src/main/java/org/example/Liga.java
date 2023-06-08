@@ -1,17 +1,20 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class Liga {
 
-	private Equipo[] Teams;
+	private Equipo[] teams;
 
 	public Liga() {
-		// TODO - implement Liga.Liga
-		throw new UnsupportedOperationException();
+		this.teams = new Equipo[16];
+		for (int i = 0; i < 16; i++) {
+			this.teams[i] = new Equipo();
+		}
 	}
 
 	public Equipo[] getTeams() {
-		// TODO - implement Liga.getTeams
-		throw new UnsupportedOperationException();
+		return this.teams;
 	}
 
 	/**
@@ -19,8 +22,7 @@ public class Liga {
 	 * @param Teams
 	 */
 	public void setTeams(Equipo[] Teams) {
-		// TODO - implement Liga.setTeams
-		throw new UnsupportedOperationException();
+		this.teams = Teams;
 	}
 
 	/**
@@ -28,8 +30,7 @@ public class Liga {
 	 * @param teamIndex
 	 */
 	public Equipo getTeam(int teamIndex) {
-		// TODO - implement Liga.getTeam
-		throw new UnsupportedOperationException();
+		return this.teams[teamIndex];
 	}
 
 	/**
@@ -37,13 +38,19 @@ public class Liga {
 	 * @param teamIndex
 	 */
 	public Jugador[] getTeamPlayers(int teamIndex) {
-		// TODO - implement Liga.getTeamPlayers
-		throw new UnsupportedOperationException();
+		return this.teams[teamIndex].getPlayers();
 	}
 
-	public Jugador[] getTeamLeaders() {
-		// TODO - implement Liga.getTeamLeaders
-		throw new UnsupportedOperationException();
+	public Jugador[] getTeamLeaders() throws Exception {
+		Jugador[] leaders = new	Jugador[this.teams.length];
+		for (int i = 0; i < this.teams.length; i++) {
+			try {
+				leaders[i] = this.teams[i].getLeader();
+			} catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+		return leaders;
 	}
 
 	/**
@@ -51,8 +58,7 @@ public class Liga {
 	 * @param teamIndex
 	 */
 	public int getTeamScore(int teamIndex) {
-		// TODO - implement Liga.getTeamScore
-		throw new UnsupportedOperationException();
+		return this.teams[teamIndex].getScore();
 	}
 
 	/**
@@ -61,8 +67,7 @@ public class Liga {
 	 * @param newTeam
 	 */
 	public void replaceTeam(int oldTeamIndex, Equipo newTeam) {
-		// TODO - implement Liga.replaceTeam
-		throw new UnsupportedOperationException();
+		this.teams[oldTeamIndex] = newTeam;
 	}
 
 	/**
@@ -70,13 +75,27 @@ public class Liga {
 	 * @param oldTeamIndex
 	 */
 	public void regenerateTeam(int oldTeamIndex) {
-		// TODO - implement Liga.regenerateTeam
-		throw new UnsupportedOperationException();
+		this.teams[oldTeamIndex] = new Equipo();
 	}
 
 	public boolean areTeamsReady() {
-		// TODO - implement Liga.areTeamsReady
-		throw new UnsupportedOperationException();
+		boolean haveAllPlayers=true;
+		boolean allTeamsHaveLeader=true;
+		for (int i = 0; i < this.teams.length; i++) {
+			if (!this.teams[i].hasEnoughPlayers()){
+				if (haveAllPlayers) {
+					haveAllPlayers = false;
+				}
+				System.out.println("Equipo "+i+" no tiene la cantidad de jugadores necesaria, tiene "+this.teams[i].playerCount()+".");
+			}
+			if (!this.teams[i].hasLeader()){
+				if (allTeamsHaveLeader) {
+					allTeamsHaveLeader = false;
+				}
+				System.out.println("Equipo "+i+" no tiene un lider.");
+			}
+		}
+		return (haveAllPlayers && allTeamsHaveLeader);
 	}
 
 	/**
@@ -84,22 +103,34 @@ public class Liga {
 	 * @param newTeam
 	 */
 	public void addTeam(Equipo newTeam) {
-		// TODO - implement Liga.addTeam
-		throw new UnsupportedOperationException();
+		if (this.teams.length < 4) {
+			int length = this.teams.length;
+			this.teams = Arrays.copyOf(this.teams, length + 1);
+			this.teams[length] = newTeam;
+		}
 	}
 
 	/**
-	 * 
+	 *
 	 * @param teamIndex
 	 */
 	public void removeTeam(int teamIndex) {
-		// TODO - implement Liga.removeTeam
-		throw new UnsupportedOperationException();
+		if (teamIndex >= 0 && teamIndex < this.teams.length) {
+			int length = this.teams.length;
+			Equipo[] updatedTeams = new Equipo[length - 1];
+			int count = 0;
+			for (int i = 0; i < length; i++) {
+				if (i != teamIndex) {
+					updatedTeams[count++] = this.teams[i];
+				}
+			}
+			this.teams = updatedTeams;
+		}
 	}
 
+
 	public int teamCount() {
-		// TODO - implement Liga.teamCount
-		throw new UnsupportedOperationException();
+		return this.teams.length;
 	}
 
 }

@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6d918cb0-da6c-4e63-9eda-1e1538dfc2c7" name="Changes" comment="Jugador class defined well.&#10;Equipo class defined partially.">
+    <list default="true" id="6d918cb0-da6c-4e63-9eda-1e1538dfc2c7" name="Changes" comment="Equipo class defined well.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Equipo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Equipo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Liga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Liga.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +19,13 @@
   </component>
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -90,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686235885787</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Equipo class defined well.">
+      <created>1686237836177</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1686237836177</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,6 +137,7 @@
     <MESSAGE value="Generated code from .vpp file." />
     <MESSAGE value="README.md added." />
     <MESSAGE value="Jugador class defined well.&#10;Equipo class defined partially." />
-    <option name="LAST_COMMIT_MESSAGE" value="Jugador class defined well.&#10;Equipo class defined partially." />
+    <MESSAGE value="Equipo class defined well." />
+    <option name="LAST_COMMIT_MESSAGE" value="Equipo class defined well." />
   </component>
 </project>
